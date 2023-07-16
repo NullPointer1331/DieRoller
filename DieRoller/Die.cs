@@ -21,6 +21,9 @@ namespace DieRoller
         /// </summary>
         public bool IsHeld { get; set; }
 
+        /// <summary>
+        /// Default constructor, creates the die, rolls it, and sets <see cref="IsHeld"/> to false
+        /// </summary>
         public Die()
         {
             Roll();
@@ -28,13 +31,18 @@ namespace DieRoller
         }
 
         /// <summary>
-        /// Rolls the die, sets <see cref="FaceValue"/> and returns it
+        /// Rolls the die and sets <see cref="FaceValue"/> to
+        /// a random number if <see cref="IsHeld"/> is false 
+        /// it then returns <see cref="FaceValue"/>
         /// </summary>
         /// <returns>the new value of <see cref="FaceValue"/></returns>
         public byte Roll()
         {
-            Random rand = new Random();
-            FaceValue = (byte)rand.Next(1, 7);
+            if (!IsHeld)
+            {
+                Random rand = new();
+                FaceValue = (byte)rand.Next(1, 7);
+            }
             return FaceValue;
         }
     }
