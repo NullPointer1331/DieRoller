@@ -11,8 +11,15 @@ namespace DieRoller
     /// </summary>
     public class Die
     {
+        /// <summary>
+        /// The random number generator used to roll the die
+        /// </summary>
         private static Random _random;
 
+        /// <summary>
+        /// Static constructor for the <see cref="Die"/> class
+        /// Initializes the <see cref="_random"/> field
+        /// </summary>
         static Die()
         {
             _random = new Random();
