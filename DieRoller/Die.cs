@@ -11,16 +11,30 @@ namespace DieRoller
     /// </summary>
     public class Die
     {
-        byte FaceValue { get; set; }
-        bool IsHeld { get; set; }
+        /// <summary>
+        /// The current face up value of the die
+        /// </summary>
+        public byte FaceValue { get; private set; }
 
-        public Die() {
+        /// <summary>
+        /// True if the die is held, false otherwise
+        /// </summary>
+        public bool IsHeld { get; set; }
+
+        public Die()
+        {
+            Roll();
+            IsHeld = false;
         }
 
-        public int Roll()
+        /// <summary>
+        /// Rolls the die, sets <see cref="FaceValue"/> and returns it
+        /// </summary>
+        /// <returns>the new value of <see cref="FaceValue"/></returns>
+        public byte Roll()
         {
-            Random rnd = new Random();
-            FaceValue = rnd.Next(1, 7);
+            Random rand = new Random();
+            FaceValue = (byte)rand.Next(1, 7);
             return FaceValue;
         }
     }
